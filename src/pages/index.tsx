@@ -1,22 +1,14 @@
-import Head from 'next/head'
+import Link from 'next/link'
 import { SEO, Nav, Footer } from '../components'
+// import '../static/styles/reset.scss'
 
 export default function Home() {
   return (
     <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/static/favicon.ico" />
-      </Head> 
-      <SEO></SEO>
-
-      <Nav>
-        nav
-      </Nav>
-      
+      <SEO />
+      <div dangerouslySetInnerHTML={{__html: '<p>saasasa</p><p>saasasa</p><p>saasasa</p><p>saasasa</p><p>saasasa</p><p>saasasa</p>'}}></div>
+      <Link href='/a'><a>asasas</a></Link>
       <Footer />
-
-
     </div>
   )
 }
