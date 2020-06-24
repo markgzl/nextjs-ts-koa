@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { SEO, Nav, Footer } from '../components'
 
 export default function Home() {
   return (
@@ -7,12 +8,13 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/static/favicon.ico" />
       </Head> 
+      <SEO></SEO>
 
-      <nav>
+      <Nav>
         nav
-      </nav>
+      </Nav>
       
-      
+      <Footer />
 
 
     </div>
