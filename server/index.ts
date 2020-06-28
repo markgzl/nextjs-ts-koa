@@ -1,6 +1,7 @@
 import next from 'next'
 import Koa from 'koa'
 import allRoutes from './router'
+// import db from './database'
 import { HTTP_SUCCESS_CODE } from './const'
 
 const port = parseInt((process as any).env.PORT, 10) || 3000;
@@ -11,6 +12,7 @@ const APP = next({ dev, dir: './src' })
 APP.prepare()
 	.then(()=>{
 		const server = new Koa()
+		// db.init()
 
 		server.use(allRoutes(APP).routes())
 

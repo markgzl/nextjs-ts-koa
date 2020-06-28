@@ -1,24 +1,17 @@
-import { NextPage, NextPageContext } from 'next';
+import { NextPage } from 'next';
 
-interface PContext {
+interface FooterProps {
 	userName: string;
+	data: number[]
 }
 
-const Footer: NextPage = (props) => {
-	console.log(props,'=====')
+const Footer: NextPage<FooterProps> = (props) => {
 	return (
 		<footer>
 			<div>this is footer . copyright @ {new Date().getFullYear()}</div>
-			<div>
-			Hello {props.userName}
-
-			</div>
+			<p>{props.userName}</p>
 		</footer>
 	)
 }
 
-Footer.getInitialProps =  () => ({
-	userName: 'nihao',
-	data: [1,3,4,5]
-})
 export default Footer
