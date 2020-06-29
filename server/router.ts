@@ -3,28 +3,30 @@ import Router from 'koa-router'
 import { HTTP_SUCCESS_CODE, SuccessProtocol } from './const'
 import db from  './database'
 
-const renderHtml = async (APP: any, ctx: Context, pagePath: string) => {
+const renderHtml = async (APP: any, ctx: Context, pagePath: string, params?: object) => {
 	ctx.res.statusCode = HTTP_SUCCESS_CODE
-	await APP.render(ctx.req, ctx.res, pagePath, ctx.query)
+	await APP.render(ctx.req, ctx.res, pagePath, {...ctx.query, ...params})
 	ctx.respond = false
 }
 
 const allRoutes = (app: any): Router => {
 	const router = new Router()
-	router.get('/',async ctx => renderHtml(app, ctx, '/index')	)
-	router.get('/a', async ctx =>	renderHtml(app, ctx, '/a') )
+	router.get('/',async ctx => renderHtml(app, ctx, '/index', {id: 10000})	)
+	router.get('/news', async ctx =>	renderHtml(app, ctx, '/news') )
+	router.get('/product', async ctx =>	renderHtml(app, ctx, '/product') )
+	router.get('/aboutus', async ctx =>	renderHtml(app, ctx, '/aboutUs') )
+	router.get('news/:id', async ctx =>	renderHtml(app, ctx, '/newsDetail'))
 
 	router.get('/api/news/:pageNo/:pageSize', async (ctx: Context) => {
 		const { pageNo, pageSize } = ctx.params
-		console.info(pageNo, pageSize)
-		const data = await db.query(pageNo, pageSize)
-		// ctx.res['data']=data
-		// console.log(data,'----')
+		const data = await db.queryNewsList(pageNo, pageSize)
 		ctx.body =  new SuccessProtocol(data)
-		// ctx.respond = false
-
 	})
-	router.get('/b', ctx => renderHtml(app, ctx, '/news/detail'))
+	router.get('/api/news/:id', async (ctx: Context) => {
+		const { id } = ctx.params
+		const data = await db.queryById(id)
+		ctx.body =  new SuccessProtocol(data)
+	})
 
 	return router
 }

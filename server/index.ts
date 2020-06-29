@@ -1,5 +1,6 @@
 import next from 'next'
 import Koa from 'koa'
+import bodyparser from 'koa-bodyparser'
 import allRoutes from './router'
 // import db from './database'
 import { HTTP_SUCCESS_CODE } from './const'
@@ -14,6 +15,7 @@ APP.prepare()
 		const server = new Koa()
 		// db.init()
 
+		server.use(bodyparser())
 		server.use(allRoutes(APP).routes())
 
 		// 对于未捕获的路由全部交由next.js处理
