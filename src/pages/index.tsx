@@ -21,9 +21,10 @@ export default class Home extends React.Component{
       origin: 'left',
     };
     const ani = ScrollReveal({mobile: false, reset: true})
-    ani.reveal('.e',slideUp,)
+    const a = ani.reveal('.e',slideUp,)
     ani.reveal('.c',slideIn,)
     ani.reveal('.container', {opacity: 0.3, delay: 300})
+    ani.clean('.container')
   }
 
   render() {
