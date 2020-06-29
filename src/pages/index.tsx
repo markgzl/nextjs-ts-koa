@@ -1,70 +1,63 @@
 import React from 'react'
-import Link from 'next/link'
-import { SEO, Nav, Footer } from '../components'
-import { getData } from '../utils/fetch'
-import axios from 'axios'
+// import Link from 'next/link'
+// import { SEO, Nav, Footer } from '../components'
+// import ScrollReveal from 'scrollreveal'
+import './main.scss'
 
-interface HomeProps {
-  title: string;
-  desc: string;
-  route: string;
-  data: number[],
-  id: number;
-  newsList: NewsItem[]
-}
-interface HomeState {
-  ni: string
-}
-interface NewsItem{
-  id: number;
-  title: string;
-  subtitle?: string;
-  content?: string;
-  author?: string;
-  source?: string;
-  imgurl?: string
-}
-interface NewsData{
-  total: number;
-  hasMore: Boolean;
-  data: NewsItem[]
-}
-interface News{
-  code: number;
-  data: NewsData,
-  msg?: string
-}
-export default class Home extends React.Component<HomeProps, HomeState> {
-  static async getInitialProps ({query}){
-    const d = await getData<News>('http://localhost:3000/api/news/1/10')
-    return {id: query.id, newsList: d.data.data}
+export default class Home extends React.Component{
+  static async getInitialProps({ query }) {
+    return { id: query.id, }
   }
-  constructor(props: HomeProps){
-    super(props)
+  
+  componentDidMount(){
+    console.log(this.props,'======',window)
+    var slideUp = {
+      distance: '150%',
+      origin: 'bottom',
+      opacity: null
+    };
+    var slideIn = {
+      distance: '150px',
+      origin: 'left',
+    };
+    const ani = ScrollReveal({mobile: false, reset: true})
+    ani.reveal('.e',slideUp,)
+    ani.reveal('.c',slideIn,)
+    ani.reveal('.container', {opacity: 0.3, delay: 300})
   }
-  state: HomeState = {
-    ni: '',
-  }
-  add = () => {
-    this.setState({
-      ni: 'nihao '
-    })
-  }
-  render(){
-    console.log(this.props)
+
+  render() {
     return (
       <div className="container">
-        {this.props.id}
-        <SEO />
-        <Nav />
-        {this.props.newsList.map(news=>{
-          return <div key={news.id}>
-            <img src={news.imgurl} alt=""/>
-             <div dangerouslySetInnerHTML={{__html: news.content}}></div>
-          </div>
-        })}
-        <Link href='/a'><a>asasas</a></Link>
-        <Footer data={[1,2,3,4]} userName='123' />
+        <header className='header'>
+        Header
+        </header>
+        <main>
+          <section className='a a'>
+          1
+          </section>
+          <section className='a b'>2</section>
+          <section className='a b'>3</section>
+          <section className='a c'>4</section>
+          <section className='a c'>4</section>
+          <section className='a c'>4</section>
+          <section className='a c'>4</section>
+          <section className='a c'>4</section>
+          <section className='a d'>5</section>
+          <section className='a e'>6</section>
+          <section className='a e'>6</section>
+          <section className='a e'>6</section>
+          <section className='a e'>6</section>
+          <section className='a e'>6</section>
+          <section className='a e'>6</section>
+          <section className='a f'>7</section>
+
+        </main>
+        <footer>
+
+        </footer>
+        
+        
       </div>
     )
   }
