@@ -3,6 +3,8 @@ import React from 'react'
 import App from 'next/app'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+// import ScrollReveal from 'scrollreveal'
+ 
 
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start()
