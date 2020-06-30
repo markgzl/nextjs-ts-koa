@@ -13,7 +13,6 @@ const APP = next({ dev, dir: './src' })
 APP.prepare()
 	.then(()=>{
 		const server = new Koa()
-		// db.init()
 
 		server.use(bodyparser())
 		server.use(allRoutes(APP).routes())
@@ -27,6 +26,9 @@ APP.prepare()
 
 		server.listen(port,()=>{
 			console.log('success on port 3000')
+		})
+		server.on('error',(err)=>{
+			console.log(err)
 		})
 	})
 	.catch(err=>{
