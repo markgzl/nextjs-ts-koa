@@ -1,10 +1,14 @@
 import React from 'react'
 import Head from 'next/head'
 
-const SEO: React.FC = () => {
+interface ITitle {
+	title: string
+}
+
+const SEO: React.FC<ITitle> = ({title}) => {
 	return (
 		<Head>
-			<title>nihao woshi SEO</title>
+			<title>找油网-{title}</title>
 		</Head>
 	)
 }
