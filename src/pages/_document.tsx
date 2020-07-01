@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
           <meta name="keywords" content="desc" />
           <meta name="description" content="desc" />
           <meta name="author" content="desc" />
+          {/* 动画库 cdn */}
           <script src="https://cdn.bootcss.com/scrollReveal.js/4.0.5/scrollreveal.js"></script>
 				</Head>
         <body>

@@ -22,9 +22,12 @@ const Nav: React.FC = () => {
 		ani.reveal('.logo', slideLeft)
 		ani.reveal('.nav', slideDown)
 		return ()=>{
+			// @ts-ignore
 			ani.clean('.action')
+			ani.clean('.logo')
+			ani.clean('.nav')
 		}	
-	})
+	},[])
 
 	return (
 		<header className='header'>

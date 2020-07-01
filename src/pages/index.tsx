@@ -11,19 +11,13 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    var slideUp = {
-      distance: '150%',
+    const ani = ScrollReveal()
+    var slideDown = {
+      distance: '200%',
       origin: 'bottom',
-      opacity: 0
+    
     };
-    var slideIn = {
-      distance: '150px',
-      origin: 'left',
-    };
-    const ani = ScrollReveal({ mobile: false, reset: true })
-    ani.reveal('.e', slideUp)
-    ani.reveal('.c', slideIn)
-    ani.reveal('.container', { opacity: 0.3, delay: 300 })
+    ani.reveal('.a', {...slideDown, reset: true})
   }
 
   render() {
