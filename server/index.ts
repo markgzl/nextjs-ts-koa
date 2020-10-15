@@ -5,7 +5,7 @@ import allRoutes from './router'
 // import db from './database'
 import { HTTP_SUCCESS_CODE } from './const'
 
-const port = parseInt((process as any).env.PORT, 10) || 3000;
+const port = parseInt((process as any).env.PORT, 10) || 7050;
 const dev = process.env.NODE_ENV !== "production";
 
 const APP = next({ dev, dir: './src' })
