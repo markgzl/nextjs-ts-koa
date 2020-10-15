@@ -25,12 +25,27 @@
 	align-items: center;
 	justify-content: flex-start;
 	margin-left: 100px;
+	position: relative;
+
 	&-link{
 		color: #333;
 		display: block;
 		padding: 10px 24px;
 		text-decoration: none;
 		cursor: pointer;
+		position: relative;
+		&::after{
+			content: "";
+			position: absolute;
+			display: block;
+			bottom: -24px;
+			left: 50%;
+			height: 4px;
+			width: 100%;
+			background-color: lightblue;
+			transform: translateX(-50%);
+			transition: left 0.3s ease-in-out;
+		}
 	}
 }
 .action{

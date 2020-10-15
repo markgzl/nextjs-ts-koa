@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import './index.scss'
 const Nav: React.FC = () => {
-
 	var slideRight = {
 		distance: '100%',
 		origin: 'right',
@@ -22,12 +21,14 @@ const Nav: React.FC = () => {
 		ani.reveal('.logo', slideLeft)
 		ani.reveal('.nav', slideDown)
 		return ()=>{
-			// @ts-ignore
+		
 			ani.clean('.action')
 			ani.clean('.logo')
 			ani.clean('.nav')
 		}	
 	},[])
+
+	
 
 	return (
 		<header className='header'>
